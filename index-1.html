@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SHA DEVELOPS — Elite Web Development Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --bg: #f8faff;
+  --bg2: #eef4ff;
+  --bg3: #e8f5ee;
+  --text: #0d1117;
+  --text2: #3a4256;
+  --text3: #6b7a99;
+  --blue: #3b82c4;
+  --blue-light: #dbeafe;
+  --blue-mid: #93c5fd;
+  --green: #2e9e60;
+  --green-light: #d1fae5;
+  --green-mid: #6ee7b7;
+  --accent: #1d4ed8;
+  --gold: #b8962e;
+  --border: rgba(59,130,196,0.15);
+  --shadow: 0 4px 40px rgba(30,64,175,0.08);
+  --shadow-card: 0 8px 48px rgba(30,64,175,0.10);
+  --nav-bg: rgba(248,250,255,0.92);
+  --card-bg: #ffffff;
+  --card-border: rgba(59,130,196,0.12);
+  --tab-bg: #f0f6ff;
+  --transition: 0.35s cubic-bezier(.4,0,.2,1);
+}
+[data-theme="dark"] {
+  --bg: #080c14;
+  --bg2: #0d1524;
+  --bg3: #091810;
+  --text: #e8edf8;
+  --text2: #a8b8d8;
+  --text3: #6b7a99;
+  --blue: #2563a8;
+  --blue-light: #0f2044;
+  --blue-mid: #1e3a6e;
+  --green: #1a6b3e;
+  --green-light: #052210;
+  --green-mid: #0d4022;
+  --accent: #3b82f6;
+  --gold: #d4a832;
+  --border: rgba(37,99,168,0.25);
+  --shadow: 0 4px 40px rgba(0,0,0,0.4);
+  --shadow-card: 0 8px 48px rgba(0,0,0,0.5);
+  --nav-bg: rgba(8,12,20,0.95);
+  --card-bg: #0d1524;
+  --card-border: rgba(37,99,168,0.2);
+  --tab-bg: #111827;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  transition:background var(--transition),color var(--transition);
+  overflow-x:hidden;
+}
+
+/* ── NAV ─────────────────────────────────── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:999;
+  background:var(--nav-bg);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 5vw;height:70px;
+  transition:background var(--transition);
+}
+.nav-logo{
+  font-family:'Playfair Display',serif;
+  font-size:1.55rem;font-weight:900;
+  letter-spacing:.04em;
+  background:linear-gradient(135deg,var(--blue),var(--green));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{
+  font-size:.82rem;font-weight:500;letter-spacing:.08em;
+  color:var(--text2);text-decoration:none;text-transform:uppercase;
+  transition:color .2s;
+}
+.nav-links a:hover{color:var(--blue);}
+.theme-toggle{
+  display:flex;align-items:center;gap:.5rem;
+  background:var(--blue-light);
+  border:1px solid var(--border);
+  border-radius:50px;padding:.35rem .9rem;
+  cursor:pointer;transition:all .3s;font-size:.8rem;font-weight:500;
+  color:var(--text2);
+}
+.theme-toggle:hover{background:var(--blue-mid);color:var(--text);}
+.theme-toggle .icon{font-size:1.1rem;}
+
+/* ── SECTION BASE ────────────────────────── */
+section{min-height:100vh;padding:120px 6vw 80px;}
+.section-label{
+  font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;
+  color:var(--blue);font-weight:600;margin-bottom:1rem;
+}
+h1,h2{font-family:'Playfair Display',serif;}
+h2{font-size:clamp(2rem,4vw,3.2rem);font-weight:700;line-height:1.15;margin-bottom:1.5rem;}
+.sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.25rem;color:var(--text2);line-height:1.7;max-width:640px;}
+
+/* ── PAGE 1 — HERO ───────────────────────── */
+#hero{
+  min-height:100vh;display:flex;flex-direction:column;
+  justify-content:center;align-items:flex-start;
+  padding:0 6vw;position:relative;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;z-index:0;
+  background:radial-gradient(ellipse 80% 60% at 70% 40%, var(--blue-light) 0%, transparent 70%),
+             radial-gradient(ellipse 60% 50% at 20% 70%, var(--green-light) 0%, transparent 70%);
+}
+.hero-content{position:relative;z-index:1;max-width:820px;}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:var(--card-bg);border:1px solid var(--border);
+  border-radius:50px;padding:.4rem 1.2rem;
+  font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--blue);font-weight:600;margin-bottom:2rem;
+  box-shadow:var(--shadow);
+}
+.hero-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(3rem,7vw,6rem);font-weight:900;
+  line-height:1.05;margin-bottom:1.2rem;
+}
+.hero-title .brand{
+  background:linear-gradient(135deg,var(--blue) 30%,var(--green) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.hero-desc{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.4rem;font-style:italic;
+  color:var(--text2);line-height:1.7;max-width:600px;margin-bottom:2.5rem;
+}
+.hero-levels{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem;}
+.level-chip{
+  padding:.45rem 1.2rem;border-radius:50px;
+  font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  border:1.5px solid;transition:all .25s;
+}
+.level-chip.basic{border-color:#94a3b8;color:#64748b;background:rgba(148,163,184,.08);}
+.level-chip.standard{border-color:var(--blue);color:var(--blue);background:var(--blue-light);}
+.level-chip.premium{border-color:var(--green);color:var(--green);background:var(--green-light);}
+.level-chip.professional{border-color:var(--gold);color:var(--gold);background:rgba(184,150,46,.08);}
+.level-chip.elite{
+  border-color:transparent;
+  background:linear-gradient(135deg,var(--blue),var(--green));
+  color:#fff;
+}
+.hero-cta{
+  display:flex;gap:1rem;flex-wrap:wrap;
+}
+.btn-primary{
+  padding:.8rem 2.4rem;border-radius:50px;
+  background:linear-gradient(135deg,var(--blue),var(--green));
+  color:#fff;font-weight:600;font-size:.9rem;letter-spacing:.04em;
+  border:none;cursor:pointer;text-decoration:none;
+  box-shadow:0 4px 24px rgba(59,130,196,.3);
+  transition:transform .2s,box-shadow .2s;
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(59,130,196,.4);}
+.btn-outline{
+  padding:.8rem 2.4rem;border-radius:50px;
+  border:1.5px solid var(--border);color:var(--text2);
+  background:var(--card-bg);font-weight:500;font-size:.9rem;
+  cursor:pointer;text-decoration:none;transition:all .2s;
+}
+.btn-outline:hover{border-color:var(--blue);color:var(--blue);}
+.hero-stats{
+  display:flex;gap:3rem;margin-top:4rem;flex-wrap:wrap;
+}
+.stat{border-left:2px solid var(--border);padding-left:1.2rem;}
+.stat-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--blue);}
+.stat-label{font-size:.75rem;color:var(--text3);letter-spacing:.06em;text-transform:uppercase;}
+
+/* scroll line */
+.scroll-line{
+  position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:.4rem;
+  font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--text3);
+}
+.scroll-bar{width:1px;height:50px;background:linear-gradient(var(--blue),transparent);animation:scrollDown 1.5s infinite;}
+@keyframes scrollDown{0%{height:50px;opacity:1}100%{height:10px;opacity:0;transform:translateY(20px)}}
+
+/* ── PAGE 2 — DOMAINS ────────────────────── */
+#domains{background:var(--bg2);}
+.domains-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-top:3rem;}
+.domain-card{
+  background:var(--card-bg);border:1px solid var(--card-border);
+  border-radius:20px;padding:2.5rem;box-shadow:var(--shadow-card);
+  transition:transform .3s,box-shadow .3s;
+}
+.domain-card:hover{transform:translateY(-4px);box-shadow:0 16px 60px rgba(30,64,175,.12);}
+.domain-card.sub{border-top:4px solid var(--blue);}
+.domain-card.custom{border-top:4px solid var(--green);}
+.domain-icon{font-size:2.5rem;margin-bottom:1rem;}
+.domain-card h3{
+  font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;margin-bottom:.6rem;
+}
+.domain-card p{color:var(--text2);font-size:.9rem;line-height:1.7;margin-bottom:1.5rem;}
+.benefit-list{list-style:none;display:flex;flex-direction:column;gap:.6rem;}
+.benefit-list li{
+  display:flex;align-items:center;gap:.6rem;font-size:.85rem;color:var(--text2);
+}
+.benefit-list li::before{content:'✓';color:var(--green);font-weight:700;}
+.price-badge{
+  display:inline-block;margin-top:1.5rem;
+  padding:.45rem 1.3rem;border-radius:50px;font-weight:700;font-size:.85rem;
+  background:var(--blue-light);color:var(--blue);border:1px solid var(--border);
+}
+.domain-card.custom .price-badge{background:var(--green-light);color:var(--green);}
+.examples-row{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.5rem;}
+.example-pill{
+  padding:.3rem .9rem;border-radius:50px;
+  font-size:.75rem;font-weight:500;font-family:monospace;
+  border:1px solid var(--border);color:var(--text3);background:var(--tab-bg);
+}
+
+/* ── PAGE 3 — WEBSITE LEVELS ─────────────── */
+#levels{min-height:100vh;}
+.levels-header{text-align:center;margin-bottom:3rem;}
+.levels-header .sub{margin:0 auto;}
+.levels-tabs{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin-bottom:3rem;}
+.tab-btn{
+  padding:.6rem 1.6rem;border-radius:50px;
+  border:1.5px solid var(--border);background:var(--tab-bg);
+  color:var(--text2);font-size:.8rem;font-weight:600;letter-spacing:.06em;
+  text-transform:uppercase;cursor:pointer;transition:all .25s;
+}
+.tab-btn.active.basic{background:#e2e8f0;border-color:#94a3b8;color:#475569;}
+.tab-btn.active.standard{background:var(--blue-light);border-color:var(--blue);color:var(--blue);}
+.tab-btn.active.premium{background:var(--green-light);border-color:var(--green);color:var(--green);}
+.tab-btn.active.professional{background:rgba(184,150,46,.12);border-color:var(--gold);color:var(--gold);}
+.tab-btn.active.elite{background:linear-gradient(135deg,var(--blue),var(--green));border-color:transparent;color:#fff;}
+
+.level-panel{display:none;}
+.level-panel.active{display:block;animation:fadeIn .35s ease;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+.level-info{
+  display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;
+  margin-bottom:2.5rem;
+}
+.level-desc-card{
+  background:var(--card-bg);border:1px solid var(--card-border);
+  border-radius:20px;padding:2rem;box-shadow:var(--shadow);
+}
+.level-desc-card h3{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;margin-bottom:.5rem;}
+.level-price{font-size:.85rem;font-weight:700;margin:.6rem 0;padding:.35rem 1rem;border-radius:50px;display:inline-block;}
+.feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-top:1rem;}
+.feature-item{
+  font-size:.8rem;color:var(--text2);display:flex;align-items:center;gap:.4rem;
+  padding:.3rem 0;
+}
+.feature-item::before{content:'⚡';font-size:.7rem;}
+
+.example-showcase{
+  background:var(--card-bg);border:1px solid var(--card-border);
+  border-radius:20px;overflow:hidden;box-shadow:var(--shadow-card);
+}
+.showcase-header{
+  padding:1rem 1.5rem;display:flex;align-items:center;gap:.5rem;
+  border-bottom:1px solid var(--border);
+  background:var(--tab-bg);
+}
+.dot{width:10px;height:10px;border-radius:50%;}
+.dot-r{background:#ff5f57;}.dot-y{background:#febc2e;}.dot-g{background:#28c840;}
+.showcase-url{font-size:.75rem;font-family:monospace;color:var(--text3);margin-left:.5rem;}
+.showcase-body{
+  min-height:320px;padding:2rem;
+  display:flex;flex-direction:column;justify-content:center;
+  position:relative;overflow:hidden;
+}
+/* Fake website preview styles */
+.fake-site{width:100%;font-size:.7rem;}
+.fake-nav{display:flex;justify-content:space-between;align-items:center;padding:.5rem 1rem;background:var(--bg2);border-radius:8px;margin-bottom:1rem;}
+.fake-logo{font-family:'Playfair Display',serif;font-weight:700;font-size:.85rem;filter:blur(3px);}
+.fake-nav-links{display:flex;gap:.8rem;opacity:.5;font-size:.65rem;}
+.fake-hero-basic{text-align:center;padding:2rem 1rem;background:linear-gradient(135deg,#f1f5f9,#e2e8f0);border-radius:12px;}
+.fake-hero-standard{padding:2rem;background:linear-gradient(135deg,var(--blue-light),var(--bg));border-radius:12px;}
+.fake-hero-premium{padding:2rem;background:linear-gradient(135deg,var(--green-light),var(--blue-light));border-radius:12px;position:relative;}
+.fake-hero-professional{padding:2rem;background:linear-gradient(135deg,rgba(184,150,46,.1),var(--blue-light));border-radius:12px;border:1px solid rgba(184,150,46,.2);}
+.fake-hero-elite{padding:2rem;background:linear-gradient(135deg,var(--blue),var(--green));border-radius:12px;color:#fff;}
+.fake-h1{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;margin-bottom:.5rem;filter:blur(4px);}
+.fake-p{font-size:.7rem;opacity:.6;line-height:1.5;filter:blur(2px);}
+.fake-btn{display:inline-block;padding:.3rem .8rem;border-radius:50px;margin-top:.5rem;font-size:.65rem;font-weight:600;}
+.fake-cards{display:flex;gap:.5rem;margin-top:1rem;}
+.fake-card{flex:1;padding:.7rem;border-radius:8px;background:var(--card-bg);border:1px solid var(--border);font-size:.65rem;filter:blur(1px);}
+.blurred-name{filter:blur(5px);user-select:none;}
+
+/* full-width example row */
+.examples-showcase-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem;}
+
+/* ── PAGE 4 — POSTERS ────────────────────── */
+#posters{background:var(--bg2);}
+.poster-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;margin-top:3rem;}
+.poster-card{
+  border-radius:20px;overflow:hidden;aspect-ratio:3/4;
+  position:relative;cursor:pointer;group:true;
+  box-shadow:var(--shadow-card);transition:transform .3s;
+}
+.poster-card:hover{transform:scale(1.03);}
+.poster-bg{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;text-align:center;}
+.poster-bg.advert{background:linear-gradient(145deg,#1e3a8a,#2563eb,#7c3aed);}
+.poster-bg.event{background:linear-gradient(145deg,#065f46,#059669,#10b981);}
+.poster-bg.educational{background:linear-gradient(145deg,#7c2d12,#ea580c,#f97316);}
+.poster-bg.motivational{background:linear-gradient(145deg,#1e1b4b,#4338ca,#818cf8);}
+.poster-bg.decorative{background:linear-gradient(145deg,#831843,#db2777,#f472b6);}
+.poster-icon{font-size:3rem;margin-bottom:1rem;}
+.poster-title{color:#fff;font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;margin-bottom:.5rem;}
+.poster-desc{color:rgba(255,255,255,.75);font-size:.75rem;line-height:1.5;}
+.poster-label{
+  position:absolute;top:1rem;right:1rem;
+  background:rgba(255,255,255,.2);backdrop-filter:blur(8px);
+  color:#fff;font-size:.65rem;font-weight:600;letter-spacing:.1em;
+  padding:.2rem .6rem;border-radius:50px;text-transform:uppercase;
+}
+
+/* ── PAGE 5 — REVIEWS ────────────────────── */
+#reviews{min-height:auto;padding:120px 6vw 80px;}
+.stars-input{display:flex;gap:.5rem;margin:1.5rem 0;cursor:pointer;}
+.star{font-size:2.5rem;color:#d1d5db;transition:color .15s;cursor:pointer;}
+.star.active,.star:hover{color:#f59e0b;}
+.rating-display{
+  text-align:center;margin:2rem 0;
+  background:var(--card-bg);border-radius:20px;padding:2rem;
+  border:1px solid var(--border);
+}
+.big-rating{font-family:'Playfair Display',serif;font-size:4rem;font-weight:900;color:var(--gold);}
+.reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:3rem;}
+.review-card{
+  background:var(--card-bg);border:1px solid var(--card-border);
+  border-radius:16px;padding:1.8rem;box-shadow:var(--shadow);
+}
+.review-stars{color:#f59e0b;font-size:.9rem;margin-bottom:.8rem;}
+.review-text{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--text2);font-size:1.05rem;line-height:1.6;margin-bottom:1rem;}
+.review-author{font-size:.8rem;font-weight:600;color:var(--text3);}
+.review-level{font-size:.7rem;padding:.2rem .7rem;border-radius:50px;margin-top:.3rem;display:inline-block;}
+
+/* ── PAGE 6 — TIMELINE ───────────────────── */
+#timeline{background:var(--bg3);}
+.timeline-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;margin-top:3rem;}
+.timeline-card{
+  background:var(--card-bg);border:1px solid var(--card-border);
+  border-radius:16px;padding:1.8rem;text-align:center;
+  box-shadow:var(--shadow);transition:transform .3s;
+}
+.timeline-card:hover{transform:translateY(-4px);}
+.time-range{
+  font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;
+  background:linear-gradient(135deg,var(--blue),var(--green));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  margin-bottom:.5rem;
+}
+.timeline-note{
+  margin-top:2rem;background:var(--card-bg);border-left:4px solid var(--blue);
+  border-radius:0 12px 12px 0;padding:1.2rem 1.5rem;
+  font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--text2);font-size:1.1rem;
+}
+
+/* ── PAGE 7 — ECOMMERCE ──────────────────── */
+#ecommerce{min-height:100vh;}
+.ecom-hero{
+  background:linear-gradient(135deg,var(--blue-light),var(--green-light));
+  border-radius:24px;padding:3rem;margin-bottom:3rem;
+  display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center;
+  border:1px solid var(--border);
+}
+.ecom-stats{display:flex;gap:2rem;flex-wrap:wrap;margin-top:1.5rem;}
+.ecom-stat{text-align:center;}
+.ecom-stat-num{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--blue);}
+.ecom-stat-label{font-size:.75rem;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;}
+.ecom-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;}
+.ecom-card{
+  background:var(--card-bg);border:1px solid var(--card-border);
+  border-radius:16px;overflow:hidden;box-shadow:var(--shadow-card);
+  transition:transform .3s;
+}
+.ecom-card:hover{transform:translateY(-4px);}
+.ecom-card-top{height:160px;display:flex;align-items:center;justify-content:center;font-size:3rem;}
+.ecom-card-body{padding:1.5rem;}
+.ecom-card-body h4{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;margin-bottom:.4rem;}
+.ecom-card-body p{font-size:.82rem;color:var(--text2);line-height:1.6;}
+.ecom-tag{
+  display:inline-block;margin-top:.8rem;
+  padding:.2rem .8rem;border-radius:50px;font-size:.7rem;font-weight:600;
+}
+
+/* ── PAGE 8 — CONTACT ────────────────────── */
+#contact{background:var(--bg2);min-height:auto;}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:3rem;}
+.contact-info{display:flex;flex-direction:column;gap:1.5rem;}
+.contact-item{
+  display:flex;align-items:flex-start;gap:1rem;
+  background:var(--card-bg);border:1px solid var(--card-border);
+  border-radius:16px;padding:1.5rem;box-shadow:var(--shadow);
+}
+.contact-icon{font-size:1.8rem;flex-shrink:0;}
+.contact-item h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;margin-bottom:.3rem;}
+.contact-item p{font-size:.85rem;color:var(--text2);line-height:1.6;}
+.contact-form{
+  background:var(--card-bg);border:1px solid var(--card-border);
+  border-radius:20px;padding:2.5rem;box-shadow:var(--shadow-card);
+}
+.form-group{margin-bottom:1.2rem;}
+.form-group label{display:block;font-size:.8rem;font-weight:600;color:var(--text2);margin-bottom:.4rem;letter-spacing:.04em;}
+.form-group input,.form-group textarea,.form-group select{
+  width:100%;padding:.75rem 1rem;border-radius:10px;
+  border:1.5px solid var(--border);background:var(--bg);
+  color:var(--text);font-family:'DM Sans',sans-serif;font-size:.9rem;
+  outline:none;transition:border .2s;
+}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--blue);}
+.form-group textarea{min-height:100px;resize:vertical;}
+
+/* ── FOOTER ──────────────────────────────── */
+footer{
+  background:var(--bg);border-top:1px solid var(--border);
+  padding:2.5rem 6vw;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;
+}
+.footer-brand{font-family:'Playfair Display',serif;font-weight:900;font-size:1.2rem;
+  background:linear-gradient(135deg,var(--blue),var(--green));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.footer-copy{font-size:.78rem;color:var(--text3);}
+
+/* ── DIVIDERS ────────────────────────────── */
+.divider{height:1px;background:linear-gradient(to right,transparent,var(--border),transparent);margin:2rem 0;}
+
+/* ── RESPONSIVE ──────────────────────────── */
+@media(max-width:768px){
+  .domains-grid,.level-info,.ecom-hero,.contact-grid{grid-template-columns:1fr;}
+  nav{padding:0 4vw;}
+  .nav-links{display:none;}
+  section{padding:100px 4vw 60px;}
+  .hero-stats{gap:1.5rem;}
+  .examples-showcase-row{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-logo">SHA DEVELOPS</div>
+  <ul class="nav-links">
+    <li><a href="#hero">Home</a></li>
+    <li><a href="#domains">Domains</a></li>
+    <li><a href="#levels">Portfolio</a></li>
+    <li><a href="#posters">Posters</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#timeline">Timeline</a></li>
+    <li><a href="#ecommerce">E-Commerce</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">
+    <span class="icon" id="themeIcon">☀️</span>
+    <span id="themeLabel">Light</span>
+  </button>
+</nav>
+
+<!-- ══════════════════════════════════════════
+     PAGE 1 — HERO
+════════════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-badge">🌐 Web Development Studio — Est. 2024</div>
+    <h1 class="hero-title">
+      We craft digital<br/>
+      excellence at<br/>
+      <span class="brand">every level.</span>
+    </h1>
+    <p class="hero-desc">
+      From crisp, professional business pages to fully immersive elite digital experiences —
+      SHA DEVELOPS builds websites that convert visitors into loyal clients.
+    </p>
+    <div class="hero-levels">
+      <span class="level-chip basic">Basic</span>
+      <span class="level-chip standard">Standard</span>
+      <span class="level-chip premium">Premium</span>
+      <span class="level-chip professional">Professional</span>
+      <span class="level-chip elite">Elite</span>
+    </div>
+    <div class="hero-cta">
+      <a href="#levels" class="btn-primary">View Our Portfolio</a>
+      <a href="#contact" class="btn-outline">Get a Quote</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">5</div>
+        <div class="stat-label">Service Tiers</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">₹2K–30K</div>
+        <div class="stat-label">Price Range</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">3–10</div>
+        <div class="stat-label">Days Delivery</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Client Focused</div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-line">
+    <div class="scroll-bar"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     PAGE 2 — DOMAINS
+════════════════════════════════════════════ -->
+<section id="domains">
+  <div class="section-label">Page 2 — Hosting & Domains</div>
+  <h2>Your Address on the Internet</h2>
+  <p class="sub">Choose between a free subdomain to launch quickly, or invest in a custom domain for a powerful brand identity.</p>
+
+  <div class="domains-grid">
+    <!-- SUBDOMAIN -->
+    <div class="domain-card sub">
+      <div class="domain-icon">🔗</div>
+      <h3>Subdomain Hosting</h3>
+      <p>A subdomain is a free or low-cost extension of an existing domain. Perfect for startups, portfolios, or testing your web presence before committing to a full domain.</p>
+      <ul class="benefit-list">
+        <li>Zero annual renewal fees</li>
+        <li>Quick to set up — live in minutes</li>
+        <li>Great for portfolios & personal pages</li>
+        <li>Shared SSL certificate included</li>
+        <li>Ideal for testing & early-stage businesses</li>
+        <li>Free hosting on select platforms</li>
+      </ul>
+      <div class="examples-row">
+        <span class="example-pill">yoursite.netlify.app</span>
+        <span class="example-pill">yourbrand.vercel.app</span>
+        <span class="example-pill">store.myshopify.com</span>
+      </div>
+      <div class="price-badge">₹0 – ₹500 / year</div>
+    </div>
+
+    <!-- CUSTOM DOMAIN -->
+    <div class="domain-card custom">
+      <div class="domain-icon">🌐</div>
+      <h3>Custom Domain</h3>
+      <p>A custom domain like <em>yourbrand.com</em> builds trust, improves SEO rankings, and signals professionalism. This is the gold standard for any serious business.</p>
+      <ul class="benefit-list">
+        <li>100% branded URL — your identity</li>
+        <li>Massive trust boost with customers</li>
+        <li>Better Google search rankings (SEO)</li>
+        <li>Custom professional email (you@domain.com)</li>
+        <li>Full ownership — no platform lock-in</li>
+        <li>SSL certificate & security features</li>
+      </ul>
+      <div class="examples-row">
+        <span class="example-pill">yourbrand.com</span>
+        <span class="example-pill">mybusiness.in</span>
+        <span class="example-pill">shopname.co.in</span>
+      </div>
+      <div class="price-badge">₹800 – ₹2,000 / year</div>
+    </div>
+  </div>
+
+  <div style="margin-top:2.5rem;background:var(--card-bg);border:1px solid var(--border);border-radius:16px;padding:1.8rem;box-shadow:var(--shadow);">
+    <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.1rem;color:var(--text2);">
+      💡 <strong>SHA DEVELOPS recommends:</strong> For professional businesses, always invest in a custom domain. We help you register, configure and point your domain to your new website — completely hassle-free.
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     PAGE 3 — WEBSITE LEVELS
+════════════════════════════════════════════ -->
+<section id="levels">
+  <div class="levels-header">
+    <div class="section-label">Page 3 — Our Portfolio</div>
+    <h2>Five Levels of Web Excellence</h2>
+    <p class="sub">From lean and impactful to immersive and elite — click a tier to explore a live-style preview and see what your business could look like online.</p>
+  </div>
+
+  <div class="levels-tabs">
+    <button class="tab-btn basic active" onclick="showLevel('basic')">⬜ Basic</button>
+    <button class="tab-btn standard" onclick="showLevel('standard')">🔵 Standard</button>
+    <button class="tab-btn premium" onclick="showLevel('premium')">🟢 Premium</button>
+    <button class="tab-btn professional" onclick="showLevel('professional')">🥇 Professional</button>
+    <button class="tab-btn elite" onclick="showLevel('elite')">👑 Elite</button>
+  </div>
+
+  <!-- BASIC -->
+  <div class="level-panel active" id="panel-basic">
+    <div class="level-info">
+      <div class="level-desc-card">
+        <h3>Basic Website</h3>
+        <div class="level-price" style="background:#f1f5f9;color:#475569;">₹2,000 – ₹5,000</div>
+        <p style="color:var(--text2);font-size:.88rem;line-height:1.7;margin-top:.8rem;">Clean, functional, and fast. Ideal for small businesses, individuals, and anyone who needs a solid web presence without complexity.</p>
+        <div class="feature-grid">
+          <div class="feature-item">3–5 pages</div>
+          <div class="feature-item">Mobile responsive</div>
+          <div class="feature-item">Contact form</div>
+          <div class="feature-item">Basic SEO</div>
+          <div class="feature-item">Google Maps</div>
+          <div class="feature-item">Social links</div>
+        </div>
+      </div>
+      <div class="example-showcase">
+        <div class="showcase-header">
+          <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+          <span class="showcase-url">www.<span class="blurred-name">clientbusiness</span>.com</span>
+        </div>
+        <div class="showcase-body">
+          <div class="fake-site">
+            <div class="fake-nav">
+              <div class="fake-logo">BusinessName</div>
+              <div class="fake-nav-links"><span>Home</span><span>About</span><span>Contact</span></div>
+            </div>
+            <div class="fake-hero-basic">
+              <div class="fake-h1">Welcome to Our Store</div>
+              <div class="fake-p">Quality products. Great service. Visit us today.</div>
+              <div class="fake-btn" style="background:#94a3b8;color:#fff;">Learn More</div>
+            </div>
+            <div class="fake-cards">
+              <div class="fake-card">🏪 About Us</div>
+              <div class="fake-card">📞 Contact</div>
+              <div class="fake-card">🕐 Hours</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--text3);font-size:.95rem;text-align:center;margin-top:1rem;">
+      ✦ Business name in preview is intentionally blurred for privacy ✦
+    </div>
+  </div>
+
+  <!-- STANDARD -->
+  <div class="level-panel" id="panel-standard">
+    <div class="level-info">
+      <div class="level-desc-card">
+        <h3>Standard Website</h3>
+        <div class="level-price" style="background:var(--blue-light);color:var(--blue);">₹5,000 – ₹10,000</div>
+        <p style="color:var(--text2);font-size:.88rem;line-height:1.7;margin-top:.8rem;">A polished, multi-page website with smooth animations and a refined design. Great for restaurants, salons, clinics, and growing businesses.</p>
+        <div class="feature-grid">
+          <div class="feature-item">6–10 pages</div>
+          <div class="feature-item">Scroll animations</div>
+          <div class="feature-item">Gallery/portfolio</div>
+          <div class="feature-item">Enhanced SEO</div>
+          <div class="feature-item">Newsletter form</div>
+          <div class="feature-item">WhatsApp button</div>
+        </div>
+      </div>
+      <div class="example-showcase">
+        <div class="showcase-header">
+          <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+          <span class="showcase-url">www.<span class="blurred-name">restaurant-client</span>.in</span>
+        </div>
+        <div class="showcase-body">
+          <div class="fake-site">
+            <div class="fake-nav">
+              <div class="fake-logo">RestaurantName</div>
+              <div class="fake-nav-links"><span>Menu</span><span>Gallery</span><span>Reserve</span><span>Contact</span></div>
+            </div>
+            <div class="fake-hero-standard">
+              <div class="fake-h1">Fine Dining Experience</div>
+              <div class="fake-p">Crafted with passion. Served with care. Book your table today.</div>
+              <div class="fake-btn" style="background:var(--blue);color:#fff;margin-right:.5rem;">Reserve Now</div>
+              <div class="fake-btn" style="border:1px solid var(--blue);color:var(--blue);">View Menu</div>
+            </div>
+            <div class="fake-cards">
+              <div class="fake-card">🍽️ Menu</div>
+              <div class="fake-card">📸 Gallery</div>
+              <div class="fake-card">⭐ Reviews</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--text3);font-size:.95rem;text-align:center;margin-top:1rem;">✦ Business name in preview is intentionally blurred for privacy ✦</div>
+  </div>
+
+  <!-- PREMIUM -->
+  <div class="level-panel" id="panel-premium">
+    <div class="level-info">
+      <div class="level-desc-card">
+        <h3>Premium Website</h3>
+        <div class="level-price" style="background:var(--green-light);color:var(--green);">₹10,000 – ₹18,000</div>
+        <p style="color:var(--text2);font-size:.88rem;line-height:1.7;margin-top:.8rem;">Visually rich, highly interactive websites with custom graphics, advanced animations, and a strong brand identity. For businesses that want to stand out.</p>
+        <div class="feature-grid">
+          <div class="feature-item">10–15 pages</div>
+          <div class="feature-item">Custom animations</div>
+          <div class="feature-item">Live chat widget</div>
+          <div class="feature-item">Advanced SEO</div>
+          <div class="feature-item">Blog section</div>
+          <div class="feature-item">Analytics dashboard</div>
+        </div>
+      </div>
+      <div class="example-showcase">
+        <div class="showcase-header">
+          <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+          <span class="showcase-url">www.<span class="blurred-name">premiumclient</span>.com</span>
+        </div>
+        <div class="showcase-body">
+          <div class="fake-site">
+            <div class="fake-nav">
+              <div class="fake-logo">BrandName™</div>
+              <div class="fake-nav-links"><span>Services</span><span>Portfolio</span><span>Blog</span><span>Contact</span></div>
+            </div>
+            <div class="fake-hero-premium">
+              <div class="fake-h1">Transforming Ideas Into Reality</div>
+              <div class="fake-p">Award-winning designs that grow your business and captivate your audience.</div>
+              <div class="fake-btn" style="background:linear-gradient(135deg,var(--green),var(--blue));color:#fff;">Explore Our Work</div>
+            </div>
+            <div class="fake-cards">
+              <div class="fake-card" style="border-color:var(--green);">🎨 Design</div>
+              <div class="fake-card" style="border-color:var(--blue);">💻 Develop</div>
+              <div class="fake-card" style="border-color:var(--green);">🚀 Deploy</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--text3);font-size:.95rem;text-align:center;margin-top:1rem;">✦ Business name in preview is intentionally blurred for privacy ✦</div>
+  </div>
+
+  <!-- PROFESSIONAL -->
+  <div class="level-panel" id="panel-professional">
+    <div class="level-info">
+      <div class="level-desc-card">
+        <h3>Professional Website</h3>
+        <div class="level-price" style="background:rgba(184,150,46,.1);color:var(--gold);">₹18,000 – ₹25,000</div>
+        <p style="color:var(--text2);font-size:.88rem;line-height:1.7;margin-top:.8rem;">Enterprise-grade web presence with CMS integration, custom dashboards, booking systems, and deep brand storytelling. For established brands.</p>
+        <div class="feature-grid">
+          <div class="feature-item">15–25 pages</div>
+          <div class="feature-item">CMS integration</div>
+          <div class="feature-item">Booking system</div>
+          <div class="feature-item">Custom dashboard</div>
+          <div class="feature-item">Multi-language</div>
+          <div class="feature-item">Priority support</div>
+        </div>
+      </div>
+      <div class="example-showcase">
+        <div class="showcase-header">
+          <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+          <span class="showcase-url">www.<span class="blurred-name">enterprise-client</span>.com</span>
+        </div>
+        <div class="showcase-body">
+          <div class="fake-site">
+            <div class="fake-nav">
+              <div class="fake-logo">Enterprise™ Group</div>
+              <div class="fake-nav-links"><span>Solutions</span><span>Case Studies</span><span>Team</span><span>Book</span></div>
+            </div>
+            <div class="fake-hero-professional">
+              <div class="fake-h1">Where Business Meets Innovation</div>
+              <div class="fake-p">Trusted by 500+ companies across India. Professional solutions for modern enterprises.</div>
+              <div class="fake-btn" style="background:var(--gold);color:#fff;">Schedule a Call</div>
+            </div>
+            <div class="fake-cards">
+              <div class="fake-card" style="border-color:var(--gold);">📊 Analytics</div>
+              <div class="fake-card" style="border-color:var(--gold);">📅 Booking</div>
+              <div class="fake-card" style="border-color:var(--gold);">🌐 Global</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--text3);font-size:.95rem;text-align:center;margin-top:1rem;">✦ Business name in preview is intentionally blurred for privacy ✦</div>
+  </div>
+
+  <!-- ELITE -->
+  <div class="level-panel" id="panel-elite">
+    <div class="level-info">
+      <div class="level-desc-card" style="background:linear-gradient(135deg,var(--blue-light),var(--green-light));border-color:var(--blue);">
+        <h3>Elite Website 👑</h3>
+        <div class="level-price" style="background:linear-gradient(135deg,var(--blue),var(--green));color:#fff;">₹25,000 – ₹30,000</div>
+        <p style="color:var(--text2);font-size:.88rem;line-height:1.7;margin-top:.8rem;">The pinnacle of web development. Fully custom-coded, GPU-accelerated animations, 3D elements, AI-powered features, and a digital experience that leaves competitors speechless.</p>
+        <div class="feature-grid">
+          <div class="feature-item">Unlimited pages</div>
+          <div class="feature-item">3D / WebGL effects</div>
+          <div class="feature-item">AI chat integration</div>
+          <div class="feature-item">Full custom CMS</div>
+          <div class="feature-item">Performance optimized</div>
+          <div class="feature-item">Dedicated support</div>
+        </div>
+      </div>
+      <div class="example-showcase" style="border:2px solid;border-image:linear-gradient(135deg,var(--blue),var(--green)) 1;">
+        <div class="showcase-header" style="background:linear-gradient(135deg,var(--blue),var(--green));">
+          <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+          <span class="showcase-url" style="color:rgba(255,255,255,.8);">www.<span class="blurred-name">eliteclient</span>.com</span>
+        </div>
+        <div class="showcase-body" style="background:linear-gradient(135deg,#0d1117,#0d1a0d);">
+          <div class="fake-site">
+            <div class="fake-nav" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);">
+              <div class="fake-logo" style="color:#fff;filter:blur(3px);">LuxuryBrand™</div>
+              <div class="fake-nav-links" style="color:rgba(255,255,255,.6);">
+                <span>Experience</span><span>Vision</span><span>Craft</span><span>Connect</span>
+              </div>
+            </div>
+            <div class="fake-hero-elite">
+              <div style="font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;opacity:.7;margin-bottom:.3rem;">Welcome to the Future</div>
+              <div class="fake-h1" style="color:#fff;filter:blur(4px);">Beyond Ordinary.</div>
+              <div class="fake-p" style="color:rgba(255,255,255,.7);">An immersive digital universe. Crafted for those who refuse to settle.</div>
+              <div class="fake-btn" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3);backdrop-filter:blur(8px);">Enter Experience</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--text3);font-size:.95rem;text-align:center;margin-top:1rem;">✦ Business name in preview is intentionally blurred for privacy ✦</div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     PAGE 4 — POSTERS
+════════════════════════════════════════════ -->
+<section id="posters">
+  <div class="section-label">Page 4 — Design Services</div>
+  <h2>We Design Powerful Posters Too</h2>
+  <p class="sub">Stunning visual communication for every business need — from grand event announcements to retail shelf toppers and everything in between.</p>
+
+  <div class="poster-grid">
+    <div class="poster-card">
+      <div class="poster-bg advert">
+        <span class="poster-label">Advertising</span>
+        <div class="poster-icon">📣</div>
+        <div class="poster-title">Advertising & Promotional</div>
+        <div class="poster-desc">Sales campaigns, product launches, seasonal offers and brand awareness posters that drive action.</div>
+      </div>
+    </div>
+    <div class="poster-card">
+      <div class="poster-bg event">
+        <span class="poster-label">Event</span>
+        <div class="poster-icon">🎪</div>
+        <div class="poster-title">Event Posters</div>
+        <div class="poster-desc">Concerts, weddings, corporate events, sports meets and cultural programmes — we capture the energy.</div>
+      </div>
+    </div>
+    <div class="poster-card">
+      <div class="poster-bg educational">
+        <span class="poster-label">Educational</span>
+        <div class="poster-icon">📚</div>
+        <div class="poster-title">Educational & Informational</div>
+        <div class="poster-desc">Course enrolments, awareness campaigns, tutorials, training programmes and public health notices.</div>
+      </div>
+    </div>
+    <div class="poster-card">
+      <div class="poster-bg motivational">
+        <span class="poster-label">Motivational</span>
+        <div class="poster-icon">🔥</div>
+        <div class="poster-title">Motivational & Inspirational</div>
+        <div class="poster-desc">Gym walls, office spaces, school corridors — powerful quotes and visuals that ignite ambition.</div>
+      </div>
+    </div>
+    <div class="poster-card">
+      <div class="poster-bg decorative">
+        <span class="poster-label">Decorative</span>
+        <div class="poster-icon">🎨</div>
+        <div class="poster-title">Decorative & Retail</div>
+        <div class="poster-desc">Store decor, window displays, restaurant ambiance, boutique interiors — aesthetic posters for any space.</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:3rem;text-align:center;">
+    <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.2rem;color:var(--text2);margin-bottom:1.5rem;">Every poster is 100% custom designed. No templates. No shortcuts.</p>
+    <a href="#contact" class="btn-primary">Request a Poster Design</a>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     PAGE 5 — REVIEWS
+════════════════════════════════════════════ -->
+<section id="reviews" style="background:var(--bg);">
+  <div class="section-label">Page 5 — Client Reviews</div>
+  <h2>What Our Clients Say</h2>
+  <p class="sub">Real feedback from real businesses. We let our work speak for itself — but our clients say it louder.</p>
+
+  <div style="margin-top:2.5rem;">
+    <p style="font-weight:600;margin-bottom:.8rem;">Rate Your Experience with SHA DEVELOPS:</p>
+    <div class="stars-input" id="starInput">
+      <span class="star" data-val="1" onclick="setRating(1)">★</span>
+      <span class="star" data-val="2" onclick="setRating(2)">★</span>
+      <span class="star" data-val="3" onclick="setRating(3)">★</span>
+      <span class="star" data-val="4" onclick="setRating(4)">★</span>
+      <span class="star" data-val="5" onclick="setRating(5)">★</span>
+    </div>
+    <div id="ratingMsg" style="font-size:.85rem;color:var(--text3);margin-bottom:1.5rem;"></div>
+    <button class="btn-primary" onclick="submitRating()" id="submitRatingBtn" style="display:none;">Submit My Rating</button>
+  </div>
+
+  <div class="rating-display">
+    <div class="big-rating" id="displayRating">4.9</div>
+    <div style="color:#f59e0b;font-size:1.5rem;margin:.3rem 0;">★★★★★</div>
+    <div style="font-size:.85rem;color:var(--text3);">Average rating from <span id="reviewCount">47</span> verified clients</div>
+  </div>
+
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">"SHA DEVELOPS transformed our old website into something completely unrecognisable — in the best way possible. Clients constantly compliment us on how professional we now look online."</div>
+      <div class="review-author">Rajesh Krishnamurthy</div>
+      <span class="review-level" style="background:var(--green-light);color:var(--green);">Premium Tier</span>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">"Delivered in just 5 days and it looked absolutely elite. The team understood our brand vision from the very first call. I would recommend them to every business owner I know."</div>
+      <div class="review-author">Priya Subramaniam</div>
+      <span class="review-level" style="background:linear-gradient(135deg,var(--blue-light),var(--green-light));color:var(--blue);">Elite Tier</span>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">"As a small restaurant owner, I was worried about costs. The Basic package was perfect — clean, fast, and exactly what I needed to get found on Google. Truly excellent value."</div>
+      <div class="review-author">Mohammed Farhan</div>
+      <span class="review-level" style="background:#f1f5f9;color:#475569;">Basic Tier</span>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">"The posters they designed for our Diwali sale boosted our store footfall by 40%. The creativity and attention to detail was truly outstanding. Our go-to design team now."</div>
+      <div class="review-author">Kavitha Nair</div>
+      <span class="review-level" style="background:rgba(184,150,46,.1);color:var(--gold);">Poster Design</span>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★☆</div>
+      <div class="review-text">"Our e-commerce store was built from scratch in under 10 days. The product pages, cart system and payment gateway all worked flawlessly from day one. Very satisfied with the Professional tier."</div>
+      <div class="review-author">Senthil Arumugam</div>
+      <span class="review-level" style="background:rgba(184,150,46,.1);color:var(--gold);">Professional Tier</span>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">"Standard package was more than enough for our school admission page. Clean design, fast loading speed and the contact form works perfectly. SHA DEVELOPS delivers what they promise."</div>
+      <div class="review-author">Deepa Venkatesh</div>
+      <span class="review-level" style="background:var(--blue-light);color:var(--blue);">Standard Tier</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     PAGE 6 — TIMELINE
+════════════════════════════════════════════ -->
+<section id="timeline">
+  <div class="section-label">Page 6 — Delivery Timeline</div>
+  <h2>How Long Will It Take?</h2>
+  <p class="sub">We move fast without cutting corners. Every project has a minimum of 3 days and a maximum of 10 days for standard websites.</p>
+
+  <div class="timeline-grid">
+    <div class="timeline-card">
+      <div style="font-size:2rem;margin-bottom:.8rem;">⬜</div>
+      <div style="font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:.5rem;">Basic</div>
+      <div class="time-range">3–4 Days</div>
+      <div style="font-size:.82rem;color:var(--text2);line-height:1.6;">Simple, clean sites built quickly with precision.</div>
+    </div>
+    <div class="timeline-card">
+      <div style="font-size:2rem;margin-bottom:.8rem;">🔵</div>
+      <div style="font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:.5rem;">Standard</div>
+      <div class="time-range">4–5 Days</div>
+      <div style="font-size:.82rem;color:var(--text2);line-height:1.6;">More pages & animations, still delivered fast.</div>
+    </div>
+    <div class="timeline-card">
+      <div style="font-size:2rem;margin-bottom:.8rem;">🟢</div>
+      <div style="font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:.5rem;">Premium</div>
+      <div class="time-range">5–7 Days</div>
+      <div style="font-size:.82rem;color:var(--text2);line-height:1.6;">Rich visuals and custom features crafted with care.</div>
+    </div>
+    <div class="timeline-card">
+      <div style="font-size:2rem;margin-bottom:.8rem;">🥇</div>
+      <div style="font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;">Professional</div>
+      <div class="time-range">7–9 Days</div>
+      <div style="font-size:.82rem;color:var(--text2);line-height:1.6;">CMS & integrations need thorough testing.</div>
+    </div>
+    <div class="timeline-card" style="border:2px solid;border-image:linear-gradient(135deg,var(--blue),var(--green)) 1;">
+      <div style="font-size:2rem;margin-bottom:.8rem;">👑</div>
+      <div style="font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem;background:linear-gradient(135deg,var(--blue),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Elite</div>
+      <div class="time-range">8–10 Days</div>
+      <div style="font-size:.82rem;color:var(--text2);line-height:1.6;">Full custom build — worth every moment of the wait.</div>
+    </div>
+  </div>
+
+  <div class="timeline-note">
+    ⚡ <strong>Rush delivery available</strong> — Contact us for express timelines. Please note that all timelines begin after complete project details, content, and deposit are received from the client.
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;margin-top:2.5rem;">
+    <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:1.2rem;text-align:center;">
+      <div style="font-size:1.5rem;margin-bottom:.4rem;">📋</div>
+      <div style="font-weight:700;font-size:.85rem;margin-bottom:.3rem;">Day 1–2</div>
+      <div style="font-size:.78rem;color:var(--text3);">Planning, design mockups & client approval</div>
+    </div>
+    <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:1.2rem;text-align:center;">
+      <div style="font-size:1.5rem;margin-bottom:.4rem;">💻</div>
+      <div style="font-weight:700;font-size:.85rem;margin-bottom:.3rem;">Day 2–8</div>
+      <div style="font-size:.78rem;color:var(--text3);">Development, content integration & animations</div>
+    </div>
+    <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:1.2rem;text-align:center;">
+      <div style="font-size:1.5rem;margin-bottom:.4rem;">🧪</div>
+      <div style="font-weight:700;font-size:.85rem;margin-bottom:.3rem;">Day 8–9</div>
+      <div style="font-size:.78rem;color:var(--text3);">Testing across devices, speed optimisation</div>
+    </div>
+    <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:1.2rem;text-align:center;">
+      <div style="font-size:1.5rem;margin-bottom:.4rem;">🚀</div>
+      <div style="font-weight:700;font-size:.85rem;margin-bottom:.3rem;">Day 10</div>
+      <div style="font-size:.78rem;color:var(--text3);">Final review, launch & handover to client</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     PAGE 7 — E-COMMERCE
+════════════════════════════════════════════ -->
+<section id="ecommerce">
+  <div class="section-label">Page 7 — E-Commerce Development</div>
+  <h2>Selling Online? That's a Different League.</h2>
+
+  <div class="ecom-hero">
+    <div>
+      <div class="section-label">Why E-Commerce Is Different</div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;margin-bottom:1rem;">More Features.<br/>More Time.<br/>More Impact.</h3>
+      <p style="color:var(--text2);font-size:.9rem;line-height:1.7;max-width:480px;">E-commerce websites require payment gateways, product management systems, inventory tracking, order management, secure checkout flows, and more. This complexity means both the timeline and investment are significantly higher — but so are your returns.</p>
+      <div class="ecom-stats">
+        <div class="ecom-stat">
+          <div class="ecom-stat-num">15–30</div>
+          <div class="ecom-stat-label">Days to deliver</div>
+        </div>
+        <div class="ecom-stat">
+          <div class="ecom-stat-num">₹20K+</div>
+          <div class="ecom-stat-label">Starting price</div>
+        </div>
+        <div class="ecom-stat">
+          <div class="ecom-stat-num">24/7</div>
+          <div class="ecom-stat-label">Your store is open</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <ul class="benefit-list" style="gap:.8rem;">
+        <li>Secure payment gateway (UPI, Cards, Net Banking)</li>
+        <li>Product catalogue with search & filters</li>
+        <li>Shopping cart & smooth checkout flow</li>
+        <li>Order tracking & customer dashboard</li>
+        <li>Admin panel for managing inventory</li>
+        <li>GST-compliant invoicing</li>
+        <li>Mobile-first design for Indian shoppers</li>
+        <li>WhatsApp order notifications</li>
+        <li>SEO-ready product pages</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;margin-bottom:1.5rem;">E-Commerce Examples We Build</h3>
+  <div class="ecom-grid">
+    <div class="ecom-card">
+      <div class="ecom-card-top" style="background:linear-gradient(135deg,#fef3c7,#fde68a);">👗</div>
+      <div class="ecom-card-body">
+        <h4>Fashion & Clothing Store</h4>
+        <p>Multi-category clothing shops with size guides, lookbooks, and Instagram integration for trending collections.</p>
+        <span class="ecom-tag" style="background:var(--blue-light);color:var(--blue);">₹25,000 – ₹30,000</span>
+      </div>
+    </div>
+    <div class="ecom-card">
+      <div class="ecom-card-top" style="background:linear-gradient(135deg,#d1fae5,#a7f3d0);">🛒</div>
+      <div class="ecom-card-body">
+        <h4>Grocery & Food Delivery</h4>
+        <p>Real-time inventory, slot-based delivery scheduling, and PIN-code serviceable area management for local delivery.</p>
+        <span class="ecom-tag" style="background:var(--green-light);color:var(--green);">₹28,000 – ₹30,000</span>
+      </div>
+    </div>
+    <div class="ecom-card">
+      <div class="ecom-card-top" style="background:linear-gradient(135deg,#ede9fe,#c4b5fd);">💻</div>
+      <div class="ecom-card-body">
+        <h4>Electronics & Gadgets</h4>
+        <p>Spec comparison tables, warranty management, multi-image product pages with zoom, and EMI options at checkout.</p>
+        <span class="ecom-tag" style="background:rgba(184,150,46,.1);color:var(--gold);">₹27,000 – ₹30,000</span>
+      </div>
+    </div>
+    <div class="ecom-card">
+      <div class="ecom-card-top" style="background:linear-gradient(135deg,#fee2e2,#fca5a5);">💄</div>
+      <div class="ecom-card-body">
+        <h4>Beauty & Wellness</h4>
+        <p>Ingredient detail pages, before/after galleries, subscription boxes, and loyalty point reward systems.</p>
+        <span class="ecom-tag" style="background:var(--blue-light);color:var(--blue);">₹22,000 – ₹28,000</span>
+      </div>
+    </div>
+    <div class="ecom-card">
+      <div class="ecom-card-top" style="background:linear-gradient(135deg,#e0f2fe,#bae6fd);">📚</div>
+      <div class="ecom-card-body">
+        <h4>Books & Digital Downloads</h4>
+        <p>Instant download delivery, digital license management, review systems and reader community features.</p>
+        <span class="ecom-tag" style="background:var(--green-light);color:var(--green);">₹20,000 – ₹25,000</span>
+      </div>
+    </div>
+    <div class="ecom-card">
+      <div class="ecom-card-top" style="background:linear-gradient(135deg,#fdf4ff,#e879f9);">🏠</div>
+      <div class="ecom-card-body">
+        <h4>Home Decor & Furniture</h4>
+        <p>3D room visualizer, AR try-at-home feature, bulk order pricing and interior designer partnership portals.</p>
+        <span class="ecom-tag" style="background:rgba(184,150,46,.1);color:var(--gold);">₹28,000 – ₹30,000</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     PAGE 8 — CONTACT
+════════════════════════════════════════════ -->
+<section id="contact">
+  <div class="section-label">Page 8 — Contact Us</div>
+  <h2>Let's Build Something Together</h2>
+  <p class="sub">Based in Avadi, Tamil Nadu — we work with clients across all of India. Reach us and let's talk about your vision.</p>
+
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="contact-item">
+        <div class="contact-icon">📞</div>
+        <div>
+          <h4>Call Us</h4>
+          <p>+91 95517 82772<br/>+91 81242 54429<br/><span style="font-size:.75rem;color:var(--text3);">Available Mon–Sat, 9 AM – 8 PM IST</span></p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📍</div>
+        <div>
+          <h4>Our Location</h4>
+          <p>Avadi, Chennai<br/>Tiruvallur District<br/>Tamil Nadu — 600 071, India</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">💬</div>
+        <div>
+          <h4>WhatsApp Us</h4>
+          <p>Send your project details directly to our WhatsApp for a quick response and free initial consultation.</p>
+          <a href="https://wa.me/919551782772" style="display:inline-block;margin-top:.6rem;padding:.35rem 1rem;background:#25d366;color:#fff;border-radius:50px;font-size:.78rem;font-weight:600;text-decoration:none;">Open WhatsApp →</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">⏱️</div>
+        <div>
+          <h4>Response Time</h4>
+          <p>We typically reply within <strong>2–4 hours</strong> on business days. Same-day responses are our standard.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;margin-bottom:1.5rem;">Send Us a Message</h3>
+      <div class="form-group">
+        <label>Your Full Name</label>
+        <input type="text" placeholder="e.g. Rajesh Kumar"/>
+      </div>
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" placeholder="+91 98765 43210"/>
+      </div>
+      <div class="form-group">
+        <label>Website Level You're Interested In</label>
+        <select>
+          <option value="">Select a tier...</option>
+          <option>Basic (₹2,000 – ₹5,000)</option>
+          <option>Standard (₹5,000 – ₹10,000)</option>
+          <option>Premium (₹10,000 – ₹18,000)</option>
+          <option>Professional (₹18,000 – ₹25,000)</option>
+          <option>Elite (₹25,000 – ₹30,000)</option>
+          <option>E-Commerce Website</option>
+          <option>Poster Design</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Tell Us About Your Project</label>
+        <textarea placeholder="Describe your business, what you need, and any specific requirements..."></textarea>
+      </div>
+      <button class="btn-primary" style="width:100%;justify-content:center;" onclick="alert('Thank you! We will contact you within 2-4 hours.')">Send Enquiry →</button>
+      <p style="font-size:.72rem;color:var(--text3);margin-top:.8rem;text-align:center;">By submitting, you agree that we may contact you via WhatsApp or phone.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-brand">SHA DEVELOPS</div>
+  <div class="footer-copy">© 2024 SHA DEVELOPS. Crafted with excellence in Avadi, Tamil Nadu, India.</div>
+  <div style="font-size:.75rem;color:var(--text3);">Tiruvallur District · Tamil Nadu · 600 071</div>
+</footer>
+
+<script>
+// ── THEME TOGGLE ──────────────────────────
+function toggleTheme(){
+  const html=document.documentElement;
+  const isDark=html.getAttribute('data-theme')==='dark';
+  html.setAttribute('data-theme',isDark?'light':'dark');
+  document.getElementById('themeIcon').textContent=isDark?'☀️':'🌙';
+  document.getElementById('themeLabel').textContent=isDark?'Light':'Dark';
+}
+
+// ── LEVEL TABS ────────────────────────────
+function showLevel(level){
+  document.querySelectorAll('.level-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>{b.classList.remove('active');});
+  document.getElementById('panel-'+level).classList.add('active');
+  document.querySelectorAll('.tab-btn').forEach(b=>{
+    if(b.classList.contains(level)) b.classList.add('active');
+  });
+}
+
+// ── STAR RATING ───────────────────────────
+let currentRating=0;
+let totalRatings=47;
+let totalScore=47*4.9;
+
+function setRating(val){
+  currentRating=val;
+  document.querySelectorAll('.star').forEach((s,i)=>{
+    s.classList.toggle('active',i<val);
+  });
+  const msgs=['','Needs Improvement','Fair Work','Good Work!','Great Job! 👍','Absolutely Elite! 🔥'];
+  document.getElementById('ratingMsg').textContent=msgs[val];
+  document.getElementById('submitRatingBtn').style.display='inline-block';
+}
+
+function submitRating(){
+  if(!currentRating) return;
+  totalRatings++;
+  totalScore+=currentRating;
+  const newAvg=(totalScore/totalRatings).toFixed(1);
+  document.getElementById('displayRating').textContent=newAvg;
+  document.getElementById('reviewCount').textContent=totalRatings;
+  document.getElementById('ratingMsg').textContent='✅ Thank you for your rating!';
+  document.getElementById('submitRatingBtn').style.display='none';
+  document.querySelectorAll('.star').forEach(s=>s.style.pointerEvents='none');
+}
+
+// ── NAV ACTIVE HIGHLIGHT ──────────────────
+const sections=document.querySelectorAll('section[id]');
+window.addEventListener('scroll',()=>{
+  let current='';
+  sections.forEach(s=>{
+    if(window.scrollY>=s.offsetTop-100) current=s.id;
+  });
+  document.querySelectorAll('.nav-links a').forEach(a=>{
+    a.style.color=a.getAttribute('href')==='#'+current?'var(--blue)':'';
+  });
+},{ passive:true });
+</script>
+</body>
+</html>
